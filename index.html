@@ -3,50 +3,8 @@
 <html>
 <body style="background-color: black;">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Slider</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <style>
-    .swiper { width: 100%; height: 150px; }
-    .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-  </style>
-  
-  <style>
-  .swiper { width: 100%; height: 150px; }
-  .swiper-slide img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  border: 3px solid #00C8C8; /* बॉर्डर का रंग और मोटाई */
-  border-radius: 10px; /* बॉर्डर को हल्का गोल करने के लिए */
-  padding: 2px;
-  background: black; /* बॉर्डर के चारों ओर सफेद बैकग्राउंड */
-  }
-  </style>
-</head>
-<body>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><a href="https://www.hotstar.com" target="_blank"><img src="https://image.tmdb.org/t/p/w500/9F4lPRLjfBjsu0zjWNOZQMa8a4V.jpg" alt="Star Plus"></a></div>
-      <div class="swiper-slide"><a href="https://www.sonyliv.com" target="_blank"><img src="https://image.tmdb.org/t/p/w342/2E7me3rPi8HqaeheuD86YlpNX6k.jpg" alt="SET HD"></a></div>
-      <div class="swiper-slide"><a href="https://www.telegram.org" target="_blank"><img src="https://image.tmdb.org/t/p/w342/ii1Uik577OnQp1i5IAwpfOEpeC7.jpg" alt="Telegram"></a></div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    new Swiper('.swiper', { loop: true, pagination: { el: '.swiper-pagination', clickable: true }, autoplay: { delay: 3000 } });
-  </script>
-</body>
-</html>
-
 <html> 
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" type="image/x-icon" href="https://cdn.freelogovectors.net/wp-content/uploads/2021/12/sonyliv-logo-freelogovectors.net_.png">  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
@@ -54,7 +12,7 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> 
 
-<style>.loading{ font-weight:700; vertical-align: middle; line-height: 135px; font-size:25px; text-transform: uppercase; background: linear-gradient(to right, red 30%, rgb(10,60,215) 75%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; } h1 { background-color:#000; margin:0; text-align:center; padding:5px }a { color:#fff; text-decoration:none } #headerCount { margin-bottom:15px; font-size:large }#tvvPlayer { margin:0 auto!important; box-shadow:0 5px 5px #000 } tr th { font-tvv-name:bold; background-color:green; padding:1px } * { box-sizing:border-box } @keyframes fadein {0%{opacity:0} 66%{opacity:0} 100%{opacity:1} } @-webkit-keyframes fadein{0%{opacity:0} 66%{opacity:0} 100%{opacity:1} } .tvv-item { position:relative;display: inline-block; width:120px; height:150px;margin:3px; padding:10px;border: 1px solid rgb(0,200,200); background:transparent; box-shadow:2px 2px 5px #000; overflow:hidden; border-radius:4px; filter:contrast(100%) } .tvv-item>*{margin:0;padding:0} .tvv-item .tvv-thumb{width:100%; bottom:0px;top:0px;position:absolute;right:0; float:center;} .tvv-item .tvv-thumb img{width:100%;pointer-events:none} .tvv-item .tvv-name { position:absolute; left:0; bottom:0; font-size: 0px; display:block; text-align:center; width:100%; background:transperent; color: black; padding: 5px; font-weight:800; text-overflow: ellipsis;black-space: nowrap; overflow: hidden;} .tvv-item:hover {border:1px solid rgb(255,60,140);}.tvv-item:hover.tvv-name{background: silver} .fin, .dftr { width: 100%;margin-top: 1px;margin-bottom: 2px;float: center;height: 30px;font-size: small;background-color:rgb(40,40,40);color: black;border-radius:10px;border: 3px solid rgb(0,200,200);outline: none;text-align: center; font-family: "Poppins", sans-serif; } .fin:hover,.dftr:hover{border:3px solid rgb(255,60,140);color:white; background:black;} .tvv-item{width:calc(100%/7 - 10px)} } @media only screen and (max-width:768px){.tvv-item{width:calc(100%/6 - 10px)} } @media only screen and (max-width:650px){.tvv-item{width:calc(100%/5 - 10px)} } @media only screen and (max-width:550px){.tvv-item{width:calc(100%/4 - 10px)} } @media only screen and (max-width:425px){.tvv-item{width:calc(100%/3 - 10px)} } @media only screen and (max-width:300px){.tvv-item{width:calc(100%/2 - 10px)} } .fin {
+<style>.loading{ font-weight:700; vertical-align: middle; line-height: 135px; font-size:25px; text-transform: uppercase; background: linear-gradient(to right, red 30%, rgb(10,60,215) 75%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; } h1 { background-color:#000; margin:0; text-align:center; padding:5px }a { color:#fff; text-decoration:none } #headerCount { margin-bottom:15px; font-size:large }#tvvPlayer { margin:0 auto!important; box-shadow:0 5px 5px #000 } tr th { font-tvv-name:bold; background-color:green; padding:1px } * { box-sizing:border-box } @keyframes fadein {0%{opacity:0} 66%{opacity:0} 100%{opacity:1} } @-webkit-keyframes fadein{0%{opacity:0} 66%{opacity:0} 100%{opacity:1} } .tvv-item { position:relative;display: inline-block; width:120px; height:150px;margin:3px; padding:10px;border: 1px solid rgb(0,200,200); background:transparent; box-shadow:2px 2px 5px #000; overflow:hidden; border-radius:4px; filter:contrast(100%) } .tvv-item>*{margin:0;padding:0} .tvv-item .tvv-thumb{width:100%; bottom:0px;top:0px;position:absolute;right:0; float:center;} .tvv-item .tvv-thumb img{width:100%;pointer-events:none} .tvv-item .tvv-name { position:absolute; left:0; bottom:0; font-size: 0px; display:block; text-align:center; width:100%; background:transperent; color: black; padding: 5px; font-weight:800; text-overflow: ellipsis;black-space: nowrap; overflow: hidden;} .tvv-item:hover {border:1px solid rgb(255,60,140);}.tvv-item:hover.tvv-name{background: silver} .fin, .dftr { width: 100%;margin-top: 1px;margin-bottom: 2px;float: center;height: 30px;font-size: small;background-color:rgb(40,40,40);color: black;border-radius:10px;border: 3px solid rgb(0,200,200);outline: none;text-align: center; font-family: "Poppins", sans-serif; } .fin:hover,.dftr:hover{border:3px solid rgb(255,60,140);color:white; background:black;} .tvv-item{width:calc(100%/7 - 10px)} } @media only screen and (max-width:768px){.tvv-item{width:calc(100%/6 - 10px)} } @media only screen and (max-width:650px){.tvv-item{width:calc(100%/5 - 10px)} } @media only screen and (max-width:550px){.tvv-item{width:calc(100%/4 - 10px)} } @media only screen and (max-width:425px){.tvv-item{width:calc(100%/1 - 10px)} } @media only screen and (max-width:300px){.tvv-item{width:calc(100%/2 - 10px)} } .fin {
     position: sticky;
     top: 3;
     z-index: 1000;
@@ -63,15 +21,50 @@
 </head>
 <body>
 
-
 <div class="no-items section" id="search_top" name="Search (Top)"></div><input class="fin" placeholder="Search Channel here..." type="text">
 <div class="new">
 
+<a class="popup-video" href="#">
+  <div class="tvv-item">
+    <div class="tvv-thumb">
+      <img class="loading" src="https://i.ytimg.com/vi/xBefFUF_PQs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDuD92dR9JDG0iwpSAELUyZTflzaw" style="width:100%;height:100%;">
+    </div>
+    <div class="tvv-name">Agent</div>
+  </div>
+</a>
 
-  
-   
-  
-  
+<a class="popup-video" href="#">
+  <div class="tvv-item">
+    <div class="tvv-thumb">
+      <img class="loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHVO8rtPQvNTp6I_wEJwMyztWVpNzWGpgQBnTV81I-x6IG_f7VGDAMzrc&s=10" style="width:100%;height:100%;">
+    </div>
+    <div class="tvv-name">Fateh</div>
+  </div>
+</a>
+
+<a class="popup-video" href="#">
+  <div class="tvv-item">
+    <div class="tvv-thumb">
+      <img class="loading" src="https://i.ytimg.com/vi/xwhICt19MXc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD-emGG-568EuTUU6uQqG-aq-GWhw" style="width:100%;height:100%;">
+    </div>
+    <div class="tvv-name">Vidaamuyarchi</div>
+  </div>
+</a>
+
+<a class="popup-video" href="#">
+  <div class="tvv-item">
+    <div class="tvv-thumb">
+      <img class="loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6kvD9vCgrCjEIUvQx-JPeiIRrMkOrEjRtdrjmYkOLA5-qijsZjtct2GeE&s=10" style="width:100%;height:100%;">
+    </div>
+    <div class="tvv-name">Sankranthiki Vasthunam </div>
+  </div>
+</a>
+
+
+
+
+
+
 
 <script> $(document).ready(function() { var dftr = $('select.dftr'), headerCount = $('#headerCount'); headerCount.html('select a filter or use search'); dftr.on('change', function() { dftr.attr('disabled', 'disabled'); var records = $('#tvvTable').find('.tvv-item'); records.hide(); var critriaAttributes = []; dftr.each(function() { var $this = $(this), $selectedLength = $this.find(':selected').length, $critriaAttribute = ''; if ($selectedLength > 0 && $this.val() != '0') { if ($selectedLength == 1) { $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]'; } else { var $startDataAttribute = '[data-' + $this.data('attribute') + '*="', $endDataAttribute = '"]', $selectedValues = $this.val().toString(); $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute; } critriaAttributes.push($critriaAttribute); } }); var $showRecords = records; if (critriaAttributes.length > 0) { $.each(critriaAttributes, function(i, filterValue) { $showRecords = $showRecords.filter(filterValue); }); } $showRecords.show(); headerCount.html($showRecords.length + ' channels filtered'); dftr.removeAttr('disabled'); $(".fin").val(''); }); $(".fin").keyup(function() { var filter = $(this).val(), count = 0; $('select.dftr').prop('selectedIndex',0); $(".tvv-item").each(function() { if ($(this).text().search(new RegExp(filter, "i")) < 0) { $(this).fadeOut(); } else { $(this).show(); count++; } }); }); }); </script>
 
