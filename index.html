@@ -70,7 +70,7 @@
         #noResults {
             display: none;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 50px;
         }
         #noResults img {
             width: 150px;
@@ -160,7 +160,7 @@
 <!-- Search Bar -->
 <div class="search-container">
     <input type="text" class="search-box" id="search" placeholder="Search Movies..." onkeyup="searchMovies()">
-    <img src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png" class="search-icon" alt="Search">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMhMU_U1U48E_DDp0t5Ajd3rt4-9NruJvZ1qZyWuCTqbTvPGc8Gag5CJ8-KoSM6S-NGyKyNyIe4P2QzZqHXFrYTk6EpxHGNtvU7-qaSwbnJhtXpvriobmhJ13fxDqIQv4MTZZNI2eWazgwaWMBuML-kmmmVisKOIdMpjaetft1j8uoyYqR2CaXsVOyzDum/s256/1000342000.png" class="search-icon" alt="Search">
 </div>
 
 <!-- No Results Found Message -->
@@ -200,7 +200,6 @@
 
     let movieData = [];
 
-    // Fetch Movies
     fetch(MOVIE_URL)
         .then(response => response.json())
         .then(data => {
@@ -229,7 +228,6 @@
     function searchMovies() {
         let query = document.getElementById("search").value.toLowerCase();
         let filteredMovies = movieData.filter(movie => movie[0].toLowerCase().includes(query));
-        
         displayMovies(filteredMovies);
     }
 
@@ -238,7 +236,15 @@
         document.getElementById("modalImage").src = imageUrl;
         document.getElementById("modalGenre").textContent = genre;
         document.getElementById("watchLink").href = watchLink;
-        document.getElementById("downloadLink").href = downloadLink;
+
+        fetch(`https://nanolinks.in/api?api=0988c5f0407c29f316166e18523395fd54336707&url=${downloadLink}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("downloadLink").href = data.shortenedUrl;
+            })
+            .catch(() => {
+                document.getElementById("downloadLink").href = downloadLink;
+            });
 
         document.getElementById("movieModal").style.display = "flex";
     }
@@ -247,15 +253,6 @@
         document.getElementById("movieModal").style.display = "none";
     }
 </script>
-
-<!-- GPLINKS FULL PAGE SCRIPT -->
-<script type="text/javascript">           
-    var app_url = 'https://gplinks.com/';
-    var app_api_token = 'd85d4aa6db7fca56a199c6339576cc66315852a0';
-    var app_advert = 2;
-    var app_domains = ["https://azeemkureshi.github.io/Filmy-Degree-/"];
-</script>
-<script src='//api.gplinks.com/js/full-page-script.js'></script>
 
 </body>
 </html>
