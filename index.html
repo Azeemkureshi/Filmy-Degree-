@@ -53,7 +53,7 @@
             gap: 10px;
             width: 100%;
             max-width: 800px;
-            margin-top: 50px; /* Adjusted for search bar */
+            margin-top: 50px;
         }
         .movie {
             border-radius: 10px;
@@ -216,22 +216,13 @@
 
         movies.forEach((movie, index) => {
             let [title, imageUrl, watchLink, downloadLink, genre] = movie;
-            let gplinkDownload = `https://gplinks.com/api?api=d85d4aa6db7fca56a199c6339576cc66315852a0&url=${encodeURIComponent(downloadLink)}`;
 
             let movieDiv = document.createElement("div");
             movieDiv.classList.add("movie");
-            movieDiv.innerHTML = `<img src="${imageUrl}" alt="${title}" onclick="openModal('${title}', '${imageUrl}', '${watchLink}', '${gplinkDownload}', '${genre}')">`;
+            movieDiv.innerHTML = `<img src="${imageUrl}" alt="${title}" onclick="openModal('${title}', '${imageUrl}', '${watchLink}', '${downloadLink}', '${genre}')">`;
             movieContainer.appendChild(movieDiv);
-
-            // Har 5 movies ke baad ek ad iframe add karo
-            if ((index + 1) % 5 === 0) {
-                let adDiv = document.createElement("div");
-                adDiv.innerHTML = `<iframe class="ad-iframe" src="https://azeemkureshi.github.io/website/"></iframe>`;
-                movieContainer.appendChild(adDiv);
-            }
         });
 
-        // Agar koi movie nahi mili toh "No Results Found" message show kare
         document.getElementById("noResults").style.display = movies.length === 0 ? "block" : "none";
     }
 
@@ -256,6 +247,15 @@
         document.getElementById("movieModal").style.display = "none";
     }
 </script>
+
+<!-- GPLINKS FULL PAGE SCRIPT -->
+<script type="text/javascript">           
+    var app_url = 'https://gplinks.com/';
+    var app_api_token = 'd85d4aa6db7fca56a199c6339576cc66315852a0';
+    var app_advert = 2;
+    var app_domains = ["https://azeemkureshi.github.io/Filmy-Degree-/"];
+</script>
+<script src='//api.gplinks.com/js/full-page-script.js'></script>
 
 </body>
 </html>
