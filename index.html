@@ -96,6 +96,7 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.3s ease-in-out; /* Added animation */
         }
         .modal-content {
             background: #222;
@@ -104,6 +105,7 @@
             max-width: 400px;
             border-radius: 10px;
             text-align: center;
+            animation: fadeIn 0.3s ease-in-out; /* Added animation */
         }
         .modal img {
             width: 100%;
@@ -153,6 +155,19 @@
             display: block;
             margin: 10px 0;
         }
+
+        /* Added Animation Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -160,7 +175,7 @@
 <!-- Search Bar -->
 <div class="search-container">
     <input type="text" class="search-box" id="search" placeholder="Search Movies..." onkeyup="searchMovies()">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjMhMU_U1U48E_DDp0t5Ajd3rt4-9NruJvZ1qZyWuCTqbTvPGc8Gag5CJ8-KoSM6S-NGyKyNyIe4P2QzZqHXFrYTk6EpxHGNtvU7-qaSwbnJhtXpvriobmhJ13fxDqIQv4MTZZNI2eWazgwaWMBuML-kmmmVisKOIdMpjaetft1j8uoyYqR2CaXsVOyzDum/s256/1000342000.png" class="search-icon" alt="Search">
+    <img src="https://www.iconsdb.com/icons/preview/white/search-13-xxl.png" class="search-icon" alt="Search">
 </div>
 
 <!-- No Results Found Message -->
@@ -194,20 +209,38 @@
 </div>
 
 <script>
-    const SHEET_ID = "10AHA4ahT3oQ-_RmRKH-MhlW1_XDoFMQskpdMsq9GSgo";  
-    const API_KEY = "AIzaSyC1YPmJGo77go3igvLO4kewd0gdtXKXDRs";  
-    const MOVIE_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Sheet1?key=${API_KEY}`;  
+    const MOVIE_SHEET_ID = "10AHA4ahT3oQ-_RmRKH-MhlW1_XDoFMQskpdMsq9GSgo";
+    const AD_SHEET_ID = "1sAsrARX6-gauGu6OPkdiOBVoBlyIbwpBjbHxMm4c-OE";
+    const API_KEY = "AIzaSyC1YPmJGo77go3igvLO4kewd0gdtXKXDRs";
+
+    const MOVIE_URL = `https://sheets.googleapis.com/v4/spreadsheets/${MOVIE_SHEET_ID}/values/Sheet1?key=${API_KEY}`;
+    const AD_URL = `https://sheets.googleapis.com/v4/spreadsheets/${AD_SHEET_ID}/values/Sheet1?key=${API_KEY}`;
 
     let movieData = [];
+    let adsData = [];
 
-    fetch(MOVIE_URL)
-        .then(response => response.json())
-        .then(data => {
-            let movies = data.values;
-            movieData = movies.slice(1);
+    async function fetchMoviesAndAds() {
+        try {
+            const [movieResponse, adResponse] = await Promise.all([fetch(MOVIE_URL), fetch(AD_URL)]);
+            const movieDataJson = await movieResponse.json();
+            const adDataJson = await adResponse.json();
+
+            movieData = movieDataJson.values.slice(1);
+            adsData = adDataJson.values.slice(1);
+
             displayMovies(movieData);
-        })
-        .catch(error => console.error("Error fetching movies:", error));
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    function getRandomAd() {
+        if (adsData.length > 0) {
+            let randomIndex = Math.floor(Math.random() * adsData.length);
+            return adsData[randomIndex];
+        }
+        return null;
+    }
 
     function displayMovies(movies) {
         let movieContainer = document.getElementById("movies");
@@ -220,6 +253,19 @@
             movieDiv.classList.add("movie");
             movieDiv.innerHTML = `<img src="${imageUrl}" alt="${title}" onclick="openModal('${title}', '${imageUrl}', '${watchLink}', '${downloadLink}', '${genre}')">`;
             movieContainer.appendChild(movieDiv);
+
+            // Every 5 movies, insert a random ad
+            if ((index + 1) % 5 === 0) {
+                let randomAd = getRandomAd();
+                if (randomAd) {
+                    let [adImage, adLink] = randomAd;
+
+                    let adDiv = document.createElement("div");
+                    adDiv.classList.add("movie");
+                    adDiv.innerHTML = `<a href="${adLink}" target="_blank"><img src="${adImage}" alt="Ad"></a>`;
+                    movieContainer.appendChild(adDiv);
+                }
+            }
         });
 
         document.getElementById("noResults").style.display = movies.length === 0 ? "block" : "none";
@@ -237,6 +283,14 @@
         document.getElementById("modalGenre").textContent = genre;
         document.getElementById("watchLink").href = watchLink;
 
+        // Random Ad inside modal
+        let randomAd = getRandomAd();
+        if (randomAd) {
+            let [adImage, adLink] = randomAd;
+            document.getElementById("modalAd").innerHTML = `<a href="${adLink}" target="_blank"><img src="${adImage}" style="width:100%;border-radius:10px;"></a>`;
+        }
+
+        // Shorten download link
         fetch(`https://nanolinks.in/api?api=0988c5f0407c29f316166e18523395fd54336707&url=${downloadLink}`)
             .then(response => response.json())
             .then(data => {
@@ -246,12 +300,14 @@
                 document.getElementById("downloadLink").href = downloadLink;
             });
 
+        // Show modal
         document.getElementById("movieModal").style.display = "flex";
     }
 
     function closeModal() {
         document.getElementById("movieModal").style.display = "none";
-    }
+    } 
+    fetchMoviesAndAds();
 </script>
 
 </body>
